@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Админ панель</h1>
+<p>Пользователь: Basic Auth.</p>
+<p>Секрет менеджера установлен: <b>проверьте .env</b></p>
+<ul>
+  <li><a href="/ui/deployer">Деплой агента</a></li>
+  <li><a href="/ui/stats">Статистика агентов</a></li>
+</ul>
+{% endblock %}

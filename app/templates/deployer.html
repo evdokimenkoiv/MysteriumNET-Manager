@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Деплой агента (SSH)</h1>
+<form method="post" action="/agents/deploy" class="form">
+  <label>Host/IP: <input type="text" name="host" required></label>
+  <label>SSH user: <input type="text" name="ssh_user" value="root"></label>
+  <label>SSH password: <input type="password" name="ssh_pass" autocomplete="new-password"></label>
+  <label>Wallet address: <input type="text" name="wallet_address"></label>
+  <label>Agent name: <input type="text" name="agent_name"></label>
+  <button type="submit">Deploy</button>
+</form>
+{% if not manager_secret_set %}
+<p class="warn">Внимание: MANAGER_SECRET не установлен!</p>
+{% endif %}
+{% endblock %}

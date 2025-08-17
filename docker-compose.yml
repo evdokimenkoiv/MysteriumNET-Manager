@@ -1,0 +1,18 @@
+services:
+  manager:
+    build: .
+    image: mysteriumnet-manager-manager:latest
+    container_name: mysterium-manager
+    restart: unless-stopped
+    ports:
+      - "${MANAGER_PORT:-8080}:8080"
+    environment:
+      - ADMIN_USER=${ADMIN_USER:-admin}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-password}
+      - MANAGER_SECRET=${MANAGER_SECRET}
+      - DATABASE_URL=${DATABASE_URL:-sqlite:////data/manager.db}
+      - AGENT_REPO_URL=${AGENT_REPO_URL:-https://github.com/evdokimenkoiv/MysteriumNET-Agent.git}
+    volumes:
+      - manager_data:/data
+volumes:
+  manager_data:

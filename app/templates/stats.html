@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Статистика агентов</h1>
+<table>
+  <thead><tr><th>ID</th><th>Имя</th><th>Wallet</th><th>Host</th><th>Версия</th><th>Последний контакт</th></tr></thead>
+  <tbody>
+  {% for a in agents %}
+    <tr>
+      <td>{{ a.id }}</td>
+      <td>{{ a.name }}</td>
+      <td>{{ a.wallet or '' }}</td>
+      <td>{{ a.host or '' }}</td>
+      <td>{{ a.version or '' }}</td>
+      <td>{{ a.last_seen }}</td>
+    </tr>
+  {% else %}
+    <tr><td colspan="6">Нет зарегистрированных агентов</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
